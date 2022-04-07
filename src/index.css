@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 30px;
+  /* padding: 30px; */
 }
 
 code {
@@ -18,6 +18,14 @@ code {
 div#root {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+
+header {
+    padding: 20px 0;
+    justify-content: space-evenly;
+    background-color: whitesmoke;
+    box-shadow: 0px 0px 6px 2px #0000003d;
 }
 
 button {
@@ -52,10 +60,40 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 input {
   margin-bottom: 20px;
 }
 
 p {
   margin: 0;
+}
+
+
+/* Loader Styles Below */
+.ldsDualRing {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.ldsDualRing:after {
+  content: ' ';
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 6px solid rgb(0, 0, 0);
+  border-color: rgb(81, 0, 255) transparent rgb(255, 213, 0) transparent;
+  animation: ldsDualRing 1.2s linear infinite;
+}
+@keyframes ldsDualRing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
