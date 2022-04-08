@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { signup, login, logout, currentUser } from './userAccount-operations';
+import { userOperations } from './userAccount-operations';
+
+const { signup, login, logout, currentUser } = userOperations;
 
 const initialState = {
   user: {
@@ -28,8 +30,8 @@ const userSlice = createSlice({
       state.loading = false;
     },
     [signup.rejected]: (state, { payload }) => {
+      state.error = true;
       state.loading = false;
-      state.error = payload;
     },
 
     [login.pending]: state => {
@@ -43,7 +45,7 @@ const userSlice = createSlice({
       state.loading = false;
     },
     [login.rejected]: (state, { payload }) => {
-      state.error = payload;
+      state.error = true;
       state.loading = false;
     },
 
@@ -59,7 +61,7 @@ const userSlice = createSlice({
     },
     [logout.rejected]: (state, { payload }) => {
       state.loading = false;
-      state.error = payload;
+      state.error = true;
     },
 
     [currentUser.pending]: state => {
@@ -74,7 +76,7 @@ const userSlice = createSlice({
     },
     [currentUser.rejected]: (state, { payload }) => {
       state.loading = false;
-      state.error = payload;
+      state.error = true;
     },
   },
 });

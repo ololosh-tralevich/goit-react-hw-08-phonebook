@@ -59,11 +59,10 @@ const currentUser = createAsyncThunk(
   }
 );
 
-const userOperations = {
+export const userOperations = {
   signup,
   login,
   logout,
   currentUser,
 };
 
-export default userOperations;

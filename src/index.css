@@ -30,6 +30,7 @@ header {
 
 main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   /* height: 90vh; */
   align-items: center;
