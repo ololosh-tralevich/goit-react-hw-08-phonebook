@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
 import userOperations from '../../redux/userAccount/userAccount-operations';
-// import {getUser} from '../../redux/userAccount/userAccount-selectors';
+import {getUser} from '../../redux/userAccount/userAccount-selectors';
 
 import style from './registerModule.module.css';
 
@@ -14,8 +14,8 @@ const RegisterModule = () => {
     'password': '',
   });
 
-  // const globalState = useSelector(getUser, shallowEqual);
-  // console.log(globalState);
+  const globalState = useSelector(getUser, shallowEqual);
+  console.log(globalState);
 
 
   const dispatch = useDispatch();
