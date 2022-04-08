@@ -16,12 +16,12 @@ const HeaderModule = () => {
       </li>
       <li className={style.headerLinksItem}>
         <NavLink to="/login" className={linkClassName}>
-          Login
+          Log In
         </NavLink>
       </li>
       <li className={style.headerLinksItem}>
         <NavLink to="/register" className={linkClassName}>
-          Register
+          Sign Up
         </NavLink>
       </li>
     </ul>
