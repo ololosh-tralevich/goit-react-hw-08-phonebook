@@ -16,9 +16,7 @@ const RegisterModule = () => {
   });
 
   const loading = useSelector(getLoading, shallowEqual);
-  console.log(loading);
   const error = useSelector(getError, shallowEqual);
-  console.log(error);
 
   const dispatch = useDispatch();
   const userSignup = userData => dispatch(userOperations.signup(userData));
