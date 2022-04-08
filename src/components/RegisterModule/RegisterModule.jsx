@@ -4,7 +4,7 @@ import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
 import { userOperations } from '../../redux/userAccount/userAccount-operations';
 import { getLoading } from '../../redux/userAccount/userAccount-selectors';
-import { getError } from '../../redux/contacts/contacts-selectors';
+import { getError } from '../../redux/userAccount/userAccount-selectors';
 
 import style from './registerModule.module.css';
 
@@ -71,7 +71,7 @@ const RegisterModule = () => {
           </button>
         </form>
       </div>
-      {!error || <h2 style={{margin: '20px'}}>Something went wrong...</h2>}
+      {/* {!error || <h2 style={{margin: '20px'}}>Something went wrong...</h2>} */}
     </>
   );
 };

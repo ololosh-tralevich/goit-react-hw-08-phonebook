@@ -66,7 +66,7 @@ const LoginModule = () => {
           </button>
         </form>
       </div>
-      {!error || <h2 style={{ margin: '20px' }}>Something went wrong...</h2>}
+      {/* {!error || <h2 style={{ margin: '20px' }}>Something went wrong...</h2>} */}
     </>
   );
 };
