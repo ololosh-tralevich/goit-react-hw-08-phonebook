@@ -7,9 +7,10 @@ const addToken = token => {
 };
 
 const signup = async userData => {
+    console.log(userData)
   const { data: result } = await axios.post('/users/signup', userData);
-  addToken(result.tokenF);
   console.log('REG', result);
+  addToken(result.token);
   return result;
 };
 
