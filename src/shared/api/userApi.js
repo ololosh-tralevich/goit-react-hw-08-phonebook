@@ -23,8 +23,8 @@ const login = async userData => {
 
 const logout = async userToken => {
   console.log('logoutAPI', userToken)
-  const { data: result } = await axios.post('users/logout');
-  // const { data: result } = await axios.post('users/logout', userToken);
+  // const { data: result } = await axios.post('users/logout');
+  const { data: result } = await axios.post('users/logout', userToken);
   console.log('Logout', result);
   return result;
 };
