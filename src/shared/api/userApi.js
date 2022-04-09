@@ -14,14 +14,17 @@ const signup = async userData => {
 };
 
 const login = async userData => {
+  console.log('login', userData)
   const { data: result } = await axios.post('users/login', userData);
   addToken(result.token);
-  console.log('Login DONE');
+  console.log('Login DONE', result.token);
   return result;
 };
 
-const logout = async userData => {
-  const { data: result } = await axios.post('users/logout', userData);
+const logout = async userToken => {
+  console.log('logoutAPI', userToken)
+  const { data: result } = await axios.post('users/logout');
+  // const { data: result } = await axios.post('users/logout', userToken);
   console.log('Logout', result);
   return result;
 };

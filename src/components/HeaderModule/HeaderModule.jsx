@@ -25,7 +25,8 @@ const HeaderModule = () => {
   const userLogout = userToken => dispatch(userOperations.logout(userToken));
 
   const logoutBtn = () => {
-    userLogout(userToken);
+    // userLogout(userToken);
+    userLogout('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjUwYTQ5ODA0NTI1ZTAwMTViMzlhMGMiLCJpYXQiOjE2NDk1MTQzNTJ9.ylUp7k9nrPt8c4fmtc-YccGw9_dDy3DASM5NCnEzgJs')
   };
 
   return (

@@ -33,9 +33,9 @@ const loading = createReducer(false, {
 });
 
 const error = createReducer(null, {
-  [operations.fetchContacts.rejected]: (_, { payload }) => payload,
-  [operations.addContact.rejected]: (_, { payload }) => payload,
-  [operations.removeContact.rejected]: (_, { payload }) => payload,
+  [operations.fetchContacts.rejected]: (_, { payload }) => true,
+  [operations.addContact.rejected]: (_, { payload }) => true,
+  [operations.removeContact.rejected]: (_, { payload }) => true,
 });
 
 const contactsReducer = combineReducers({

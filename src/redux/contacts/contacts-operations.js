@@ -4,9 +4,9 @@ import services from '../../shared/api/fetchContacts';
 
 const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
-  async (_, { rejectWithValue }) => {
+  async (userToken, { rejectWithValue }) => {
     try {
-      const result = await services.getContacts();
+      const result = await services.getContacts(userToken);
       return result;
     } catch (err) {
       console.log('error');
