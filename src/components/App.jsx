@@ -1,22 +1,42 @@
-import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
+import { userOperations } from '../redux/userAccount/userAccount-operations';
 //  Добавить Lazy ! ! !
+import PrivateRoute from '../shared/Components/PrivateRoute';
+import PublicRoute from '../shared/Components/PublicRoute';
+
 import LayoutPage from '../pages/LayoutPage/LayoutPage';
-import ContactsPage from '../pages/ContactsPage/ContactsPage';
-import LoginPage from 'pages/LoginPage';
-import RegisterPage from 'pages/RegisterPage';
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage'));
+const ContactsPage = lazy(() => import('pages/ContactsPage'));
+
 
 const App = () => {
+  const dispatch = useDispatch();
+  const getCurrentUser = () => userOperations.currentUser();
+
+  useEffect(() => {
+    console.log('cr');
+    dispatch(getCurrentUser());
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <>
-      <Suspense fallback={<div className="ldsDualRing">loading</div>}>
+      <Suspense fallback={<div className="ldsDualRing"></div>}>
         <Routes>
           <Route path="/" exact element={<LayoutPage />}>
-            <Route path="contacts" element={<ContactsPage />} />
-            <Route path="register" element={<RegisterPage />} />
-            <Route path="login" element={<LoginPage />} />
+            <Route element={<PublicRoute />}>
+              <Route path="register" element={<RegisterPage />} />
+              <Route path="login" element={<LoginPage />} />
+            </Route>
+            <Route element={<PrivateRoute />}>
+              <Route path="contacts" element={<ContactsPage />} />
+            </Route>
           </Route>
+          <Route path="*" element={<Navigate to="contacts" replace/>} />
         </Routes>
       </Suspense>
     </>

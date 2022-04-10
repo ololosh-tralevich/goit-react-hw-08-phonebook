@@ -44,6 +44,7 @@ const currentUser = createAsyncThunk(
     try {
       const { user } = getState();
       const result = await userApi.currentUser(user.token);
+      console.log(result)
       return result;
     } catch (err) {
       return rejectWithValue(err);

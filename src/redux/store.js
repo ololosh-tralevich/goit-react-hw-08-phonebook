@@ -19,7 +19,7 @@ import contactsReducer from './contacts/contacts-reducer';
 const persistConfig = {
   key: 'user',
   storage,
-  whiteList: ['token'],
+  whitelist: ['token'],
 };
 
 const persistedUserReducer = persistReducer(persistConfig, userReducer);

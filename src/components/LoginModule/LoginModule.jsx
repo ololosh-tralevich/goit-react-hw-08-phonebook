@@ -11,8 +11,8 @@ import {
 import style from './loginModule.module.css';
 
 const LoginModule = () => {
-  // const globalStore = useSelector(getGlobalStore, shallowEqual)
-  // console.log(globalStore)
+  const globalStore = useSelector(getGlobalStore, shallowEqual);
+  console.log(globalStore);
 
   const [userData, setUserData] = useState({
     email: '',
@@ -24,6 +24,7 @@ const LoginModule = () => {
 
   const dispatch = useDispatch();
   const userLogin = userData => userOperations.login(userData);
+  const getCurrentUser = () => userOperations.currentUser();
 
   const onChangeForm = ev => {
     const { name, value } = ev.target;

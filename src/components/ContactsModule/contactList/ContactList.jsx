@@ -21,7 +21,7 @@ const ContactList = ({ filteredContacts, deleteContactBtn }) => {
         </button>
         <span className={styles.listDash}>&#8212;</span>
         <p>
-          {contact.name}: {contact.phone}
+          {contact.name}: {contact.number}
         </p>
       </li>
     );

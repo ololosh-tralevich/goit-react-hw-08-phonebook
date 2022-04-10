@@ -6,6 +6,7 @@ const addToken = token => {
   axios.defaults.headers.common.Authorization = token;
 };
 
+
 const signup = async userData => {
   const { data: result } = await axios.post('/users/signup', userData);
   console.log('Reg DONE');
@@ -31,6 +32,7 @@ const logout = async () => {
 const currentUser = async token => {
   addToken(token);
   const { data: result } = await axios.get('/users/current');
+  console.log('Current Usr', result)
   return result;
 };
 

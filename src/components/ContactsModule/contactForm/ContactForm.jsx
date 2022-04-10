@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './contactForm.module.css';
 
 function ContactForm({ onSubmit }) {
-  const [contactData, setContactData] = useState({ name: '', phone: '' });
+  const [contactData, setContactData] = useState({ name: '', number: '' });
 
   const onSubmitForm = ev => {
     ev.preventDefault();
@@ -19,9 +19,9 @@ function ContactForm({ onSubmit }) {
   };
 
   const resetForm = ev => {
-    const { name, phone } = ev.target;
+    const { name, number } = ev.target;
     name.value = '';
-    phone.value = '';
+    number.value = '';
   };
   return (
     <div className={styles.mainContainer}>
@@ -39,7 +39,7 @@ function ContactForm({ onSubmit }) {
 
         <input
           type="tel"
-          name="phone"
+          name="number"
           // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

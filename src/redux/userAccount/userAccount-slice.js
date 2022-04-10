@@ -60,7 +60,6 @@ const userSlice = createSlice({
       state.loading = false;
     },
     [logout.rejected]: (state, { payload }) => {
-      console.log(payload);
       state.loading = false;
       state.error = true;
     },
@@ -71,7 +70,7 @@ const userSlice = createSlice({
     },
     [currentUser.fulfilled]: (state, { payload }) => {
       state.user = { ...payload.user };
-      state.token = payload.token;
+      // state.token = payload.token;
       state.isLogin = true;
       state.loading = false;
     },

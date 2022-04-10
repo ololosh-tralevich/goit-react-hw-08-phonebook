@@ -15,7 +15,8 @@ const contacts = createReducer([], {
     payload,
   ],
   [operations.removeContact.fulfilled]: (state, { payload }) =>
-    state.filter(contact => contact.id !== payload),
+  // console.log(payload)
+  state.filter(contact => contact.id !== payload),
 });
 
 const loading = createReducer(false, {

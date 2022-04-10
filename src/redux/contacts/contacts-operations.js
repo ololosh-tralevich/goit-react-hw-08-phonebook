@@ -20,7 +20,6 @@ const addContact = createAsyncThunk(
   async (contactData, rejectWithValue) => {
     try {
       const newContact = await services.addContact(contactData);
-      console.log('newCont', contactData);
       return newContact;
     } catch (err) {
       console.log('error');
@@ -30,9 +29,9 @@ const addContact = createAsyncThunk(
   {
     condition: (contactData, { getState }) => {
       const { contacts } = getState();
-      const { name, phone } = contactData;
+      const { name, number } = contactData;
       const clone = contacts.contacts.find(
-        clone => clone.name === name || clone.phone === phone
+        clone => clone.name === name || clone.number === number
       );
       if (clone) {
         alert(`${name} is already in your contacts`);
