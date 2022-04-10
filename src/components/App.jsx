@@ -11,7 +11,6 @@ const LoginPage = lazy(() => import('pages/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
 
-
 const App = () => {
   const dispatch = useDispatch();
   const getCurrentUser = () => userOperations.currentUser();
@@ -26,6 +25,7 @@ const App = () => {
       <Suspense fallback={<div className="ldsDualRing"></div>}>
         <Routes>
           <Route path="/" exact element={<LayoutPage />}>
+            <Route index element={<Navigate to="/contacts" />} />
             <Route element={<PublicRoute />}>
               <Route path="register" element={<RegisterPage />} />
               <Route path="login" element={<LoginPage />} />
@@ -34,7 +34,7 @@ const App = () => {
               <Route path="contacts" element={<ContactsPage />} />
             </Route>
           </Route>
-          <Route path="*" element={<Navigate to="contacts" replace/>} />
+          <Route path="*" element={<Navigate to="contacts" replace />} />
         </Routes>
       </Suspense>
     </>

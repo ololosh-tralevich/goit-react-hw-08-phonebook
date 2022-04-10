@@ -29,26 +29,28 @@ const HeaderModule = () => {
 
   return (
     <ul className={style.headerLinksList}>
-      <li className={style.headerLinkContacts}>
-        <NavLink to="/contacts" className={linkClassName}>
-          Contacts
-        </NavLink>
-      </li>
       {isLogin ? (
-        <li className={style.userProfileItem}>
-          <div className={style.userProfileMainBlock}>
-            <p>Your Profile</p>
-            <div className={style.userProfileBlock}>
-              {!loading || <div className={style.ldsDualRing}></div>}
-              <h2>Your Profile</h2>
-              <p className={style.userName}>{userData.name}</p>
-              <p className={style.userEmail}>{userData.email}</p>
-              <button className={style.logoutBtn} onClick={logoutBtn}>
-                logout
-              </button>
+        <>
+          <li className={style.headerLinkContacts}>
+            <NavLink to="/contacts" className={linkClassName}>
+              Contacts
+            </NavLink>
+          </li>
+          <li className={style.userProfileItem}>
+            <div className={style.userProfileMainBlock}>
+              <p>Your Profile</p>
+              <div className={style.userProfileBlock}>
+                {!loading || <div className={style.ldsDualRing}></div>}
+                <h2>Your Profile</h2>
+                <p className={style.userName}>{userData.name}</p>
+                <p className={style.userEmail}>{userData.email}</p>
+                <button className={style.logoutBtn} onClick={logoutBtn}>
+                  logout
+                </button>
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
+        </>
       ) : (
         <>
           <li className={style.headerLinksItem}>
