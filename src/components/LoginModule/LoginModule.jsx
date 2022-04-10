@@ -5,11 +5,15 @@ import { userOperations } from '../../redux/userAccount/userAccount-operations';
 import {
   getLoading,
   getError,
+  getGlobalStore,
 } from '../../redux/userAccount/userAccount-selectors';
 
 import style from './loginModule.module.css';
 
 const LoginModule = () => {
+  // const globalStore = useSelector(getGlobalStore, shallowEqual)
+  // console.log(globalStore)
+
   const [userData, setUserData] = useState({
     email: '',
     password: '',
@@ -66,7 +70,7 @@ const LoginModule = () => {
           </button>
         </form>
       </div>
-      {/* {!error || <h2 style={{ margin: '20px' }}>Something went wrong...</h2>} */}
+      {!error || <h2 style={{ margin: '20px' }}>Wrong data, try again</h2>}
     </>
   );
 };

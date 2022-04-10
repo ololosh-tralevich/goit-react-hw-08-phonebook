@@ -22,8 +22,8 @@ div#root {
 }
 
 header {
-    padding: 15px 0;
-    justify-content: space-evenly;
+    height: 50px;
+    display: flex;
     background-color: whitesmoke;
     box-shadow: 0px 0px 6px 2px #0000003d;
 }
@@ -32,7 +32,6 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* height: 90vh; */
   align-items: center;
 }
 

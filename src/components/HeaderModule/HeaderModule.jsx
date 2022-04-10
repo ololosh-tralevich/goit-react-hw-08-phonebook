@@ -3,8 +3,8 @@ import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 
 import {
   getUser,
-  // getIsLogin,
-  getUserToken,
+  getLoading,
+  getIsLogin,
 } from '../../redux/userAccount/userAccount-selectors';
 
 import { userOperations } from '../../redux/userAccount/userAccount-operations';
@@ -17,59 +17,58 @@ const linkClassName = ({ isActive }) => {
 
 const HeaderModule = () => {
   const userData = useSelector(getUser, shallowEqual);
-  // console.log(userData);
-  // const isLogin = useSelector(getIsLogin, shallowEqual);
-  const userToken = useSelector(getUserToken, shallowEqual);
+  const isLogin = useSelector(getIsLogin, shallowEqual);
+  const loading = useSelector(getLoading, shallowEqual);
 
   const dispatch = useDispatch();
-  const userLogout = userToken => dispatch(userOperations.logout(userToken));
+  const userLogout = () => dispatch(userOperations.logout());
 
   const logoutBtn = () => {
-    // userLogout(userToken);
-    userLogout('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjUwYTQ5ODA0NTI1ZTAwMTViMzlhMGMiLCJpYXQiOjE2NDk1MTQzNTJ9.ylUp7k9nrPt8c4fmtc-YccGw9_dDy3DASM5NCnEzgJs')
+    userLogout();
   };
 
   return (
     <ul className={style.headerLinksList}>
-      {/* {!isLogin || <li className={style.userProfileItem}>
-        <div className={style.userProfileMainBlock}>
-          <p>Your Profile</p>
-          <div className={style.userProfileBlock}>
-            <h2>Your Profile</h2>
-            <p className={style.userName}>{userData.name}</p>
-            <p className={style.userEmail}>{userData.email}</p>
-            <button className={style.logoutBtn}>logout</button>
-          </div>
-        </div>
-      </li>} */}
-      <li className={style.userProfileItem}>
-        <div className={style.userProfileMainBlock}>
-          <p>Your Profile</p>
-          <div className={style.userProfileBlock}>
-            <h2>Your Profile</h2>
-            <p className={style.userName}>{userData.name}</p>
-            <p className={style.userEmail}>{userData.email}</p>
-            <button className={style.logoutBtn} onClick={logoutBtn}>
-              logout
-            </button>
-          </div>
-        </div>
-      </li>
       <li className={style.headerLinkContacts}>
         <NavLink to="/contacts" className={linkClassName}>
           Contacts
         </NavLink>
       </li>
-      <li className={style.headerLinksItem}>
-        <NavLink to="/login" className={linkClassName}>
-          Log In
-        </NavLink>
-      </li>
-      <li className={style.headerLinksItem}>
-        <NavLink to="/register" className={linkClassName}>
-          Sign Up
-        </NavLink>
-      </li>
+      {isLogin ? (
+        <li className={style.userProfileItem}>
+          <div className={style.userProfileMainBlock}>
+            <p>Your Profile</p>
+            <div className={style.userProfileBlock}>
+              {!loading || <div className={style.ldsDualRing}></div>}
+              <h2>Your Profile</h2>
+              <p className={style.userName}>{userData.name}</p>
+              <p className={style.userEmail}>{userData.email}</p>
+              <button className={style.logoutBtn} onClick={logoutBtn}>
+                logout
+              </button>
+            </div>
+          </div>
+        </li>
+      ) : (
+        <>
+          <li className={style.headerLinksItem}>
+            <NavLink to="/login" className={linkClassName}>
+              Log In
+            </NavLink>
+          </li>
+          <li className={style.headerLinksItem}>
+            <NavLink to="/register" className={linkClassName}>
+              Sign Up
+            </NavLink>
+          </li>
+        </>
+      )}
+
+      {/* {isLogin ? (
+        <li>111111111111111111111111</li>
+      ) : (
+        <li>2222222222222222222222222</li>
+      )} */}
     </ul>
   );
 };

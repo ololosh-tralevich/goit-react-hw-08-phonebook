@@ -33,7 +33,6 @@ const logout = createAsyncThunk(
       const result = await userApi.logout(userData);
       return result;
     } catch (err) {
-      console.log(err)
       return rejectWithValue(err);
     }
   }

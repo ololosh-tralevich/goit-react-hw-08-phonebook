@@ -12,8 +12,9 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import contactsReducer from './contacts/contacts-reducer';
 import userReducer from './userAccount/userAccount-slice';
+import contactsReducer from './contacts/contacts-reducer';
+
 
 const persistConfig = {
   key: 'user',
@@ -35,5 +36,4 @@ export const store = configureStore({
       },
     }),
 });
-
 export const persistor = persistStore(store);

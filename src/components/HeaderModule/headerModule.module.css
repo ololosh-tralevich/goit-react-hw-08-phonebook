@@ -1,14 +1,16 @@
 .headerLinksList {
   display: flex;
+  flex-direction: row-reverse;
   position: relative;
   align-items: center;
+  width: 100%;
 }
 
 .userProfileItem {
   position: relative;
   color: black;
-  margin-right: auto;
-  margin-left: 15%;
+  /* margin-right: auto; */
+  margin-right: 15%;
   background-color: #fff;
   border-radius: 8px;
   border: 3px solid #2196f3;
@@ -86,6 +88,9 @@
 
 
 .headerLinksItem {
+  margin-right: 10%;
+}
+.headerLinksItem:nth-child(3) {
   margin-right: 10px;
 }
 
@@ -132,4 +137,36 @@
   color: #fff;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+
+/* Loader Styles Below */
+.ldsDualRing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 101%;
+  transform: translate(-15px,-8px);
+  z-index: 2;
+  border-radius: 3px;
+  background-color: rgba(89, 87, 87, 0.505);
+}
+.ldsDualRing:after {
+  content: ' ';
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 6px solid rgb(0, 0, 0);
+  border-color: rgb(81, 0, 255) transparent rgb(255, 213, 0) transparent;
+  animation: ldsDualRing 1.2s linear infinite;
+}
+@keyframes ldsDualRing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

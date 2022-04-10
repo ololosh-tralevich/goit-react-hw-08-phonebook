@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const addToken = token => {
-  axios.defaults.headers.common.Autorization = `Bearer ${token}`;
+  axios.defaults.headers.common.Authorization = token;
 };
 
 const signup = async userData => {
@@ -14,24 +14,23 @@ const signup = async userData => {
 };
 
 const login = async userData => {
-  console.log('login', userData)
-  const { data: result } = await axios.post('users/login', userData);
+  const { data: result } = await axios.post('/users/login', userData);
   addToken(result.token);
-  console.log('Login DONE', result.token);
+  console.log('Login DONE');
   return result;
 };
 
-const logout = async userToken => {
-  console.log('logoutAPI', userToken)
-  // const { data: result } = await axios.post('users/logout');
-  const { data: result } = await axios.post('users/logout', userToken);
+const logout = async () => {
+  const { data: result } = await axios.post('/users/logout');
+  axios.defaults.headers.common.Authorization = ''
+  // instance.defaults.headers.common.Authorization = ''
   console.log('Logout', result);
   return result;
 };
 
 const currentUser = async token => {
   addToken(token);
-  const { data: result } = await axios.get('users/current');
+  const { data: result } = await axios.get('/users/current');
   return result;
 };
 
