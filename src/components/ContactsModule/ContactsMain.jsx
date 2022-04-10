@@ -4,7 +4,10 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 
 import operations from '../../redux/contacts/contacts-operations';
 import filterAction from '../../redux/contacts/contacts-actions';
-import { getContacts, getFilter } from '../../redux/contacts/contacts-selectors';
+import {
+  getContacts,
+  getFilter,
+} from '../../redux/contacts/contacts-selectors';
 import { getUserToken } from '../../redux/userAccount/userAccount-selectors';
 
 import ContactForm from './contactForm/ContactForm';
@@ -19,7 +22,8 @@ const ContactsMain = () => {
   const userToken = useSelector(getUserToken, shallowEqual);
 
   const dispatch = useDispatch();
-  const fetchContacts = (userToken) => dispatch(operations.fetchContacts(userToken));
+  const fetchContacts = userToken =>
+    dispatch(operations.fetchContacts(userToken));
   const addContact = data => dispatch(operations.addContact(data));
   const removeContact = contactId =>
     dispatch(operations.removeContact(contactId));
