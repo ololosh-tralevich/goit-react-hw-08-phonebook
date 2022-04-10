@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
@@ -30,7 +30,6 @@ const RegisterModule = () => {
 
   const submitForm = ev => {
     ev.preventDefault();
-    // ev.target.reset()
     userSignup(userData);
   };
 
@@ -52,7 +51,7 @@ const RegisterModule = () => {
           <label htmlFor="email">Your Email:</label>
           <input
             name="email"
-            // type="email"
+            type="email"
             id="email"
             required
             onChange={onChangeForm}
@@ -71,7 +70,7 @@ const RegisterModule = () => {
           </button>
         </form>
       </div>
-      {/* {!error || <h2 style={{margin: '20px'}}>Something went wrong...</h2>} */}
+      {!error || <h2 style={{ margin: '20px' }}>Something went wrong...</h2>}
     </>
   );
 };

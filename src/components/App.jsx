@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { userOperations } from '../redux/userAccount/userAccount-operations';
-//  Добавить Lazy ! ! !
 import PrivateRoute from '../shared/Components/PrivateRoute';
 import PublicRoute from '../shared/Components/PublicRoute';
 
@@ -18,7 +17,6 @@ const App = () => {
   const getCurrentUser = () => userOperations.currentUser();
 
   useEffect(() => {
-    console.log('cr');
     dispatch(getCurrentUser());
     //eslint-disable-next-line
   }, []);

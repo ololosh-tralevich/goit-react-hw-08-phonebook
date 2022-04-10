@@ -29,7 +29,7 @@ const userSlice = createSlice({
       state.isLogin = true;
       state.loading = false;
     },
-    [signup.rejected]: (state, { payload }) => {
+    [signup.rejected]: state => {
       state.error = true;
       state.loading = false;
     },
@@ -44,7 +44,7 @@ const userSlice = createSlice({
       state.isLogin = true;
       state.loading = false;
     },
-    [login.rejected]: (state, { payload }) => {
+    [login.rejected]: state => {
       state.error = true;
       state.loading = false;
     },
@@ -59,7 +59,7 @@ const userSlice = createSlice({
       state.isLogin = false;
       state.loading = false;
     },
-    [logout.rejected]: (state, { payload }) => {
+    [logout.rejected]: state => {
       state.loading = false;
       state.error = true;
     },
@@ -69,12 +69,11 @@ const userSlice = createSlice({
       state.error = false;
     },
     [currentUser.fulfilled]: (state, { payload }) => {
-      state.user = { ...payload.user };
-      // state.token = payload.token;
+      state.user = { ...payload };
       state.isLogin = true;
       state.loading = false;
     },
-    [currentUser.rejected]: (state, { payload }) => {
+    [currentUser.rejected]: state => {
       state.loading = false;
       state.error = true;
     },

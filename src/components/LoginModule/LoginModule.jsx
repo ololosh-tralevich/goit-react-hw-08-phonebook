@@ -5,15 +5,11 @@ import { userOperations } from '../../redux/userAccount/userAccount-operations';
 import {
   getLoading,
   getError,
-  getGlobalStore,
 } from '../../redux/userAccount/userAccount-selectors';
 
 import style from './loginModule.module.css';
 
 const LoginModule = () => {
-  const globalStore = useSelector(getGlobalStore, shallowEqual);
-  console.log(globalStore);
-
   const [userData, setUserData] = useState({
     email: '',
     password: '',
@@ -24,7 +20,6 @@ const LoginModule = () => {
 
   const dispatch = useDispatch();
   const userLogin = userData => userOperations.login(userData);
-  const getCurrentUser = () => userOperations.currentUser();
 
   const onChangeForm = ev => {
     const { name, value } = ev.target;
@@ -35,7 +30,6 @@ const LoginModule = () => {
 
   const formSubmit = ev => {
     ev.preventDefault();
-    // ev.target.reset()
     dispatch(userLogin(userData));
   };
 
